@@ -65,7 +65,7 @@ export default function Project({
                 layout="intrinsic" // Keeps the image ratio
                 width={700}
                 height={500}
-                className="rounded-lg object-cover w-full h-full transform transition-all hover:scale-105 hover:rotate-3 hover:translate-x-2 hover:translate-y-2"
+                className="rounded-lg object-cover w-full h-full transform transition-all hover:scale-105 hover:translate-x-2 hover:translate-y-2"
               />
             </div>
 
