@@ -36,10 +36,10 @@ export default function Project({
         scale: scaleProgress,
         opacity: opacityProgress,
       }}
-      className="group mb-8 last:mb-0 overflow-hidden" // Added overflow-hidden to prevent horizontal scroll
+      className="group mb-8 last:mb-0 overflow-hidden"
     >
       <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="block">
-        <section className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+        <section className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white relative">
           
           {/* Live Status Badge with Blinking and Glowing Effect */}
           <div className="absolute top-4 right-4 flex items-center space-x-2 z-10">
@@ -56,21 +56,20 @@ export default function Project({
 
           {/* Content Layout */}
           <div className="flex flex-col sm:flex-row sm:space-x-6 p-4 sm:p-6">
-            {/* Image */}
-            <div className="sm:w-1/2 relative mb-4 sm:mb-0 overflow-hidden rounded-lg">
+            {/* Image Container (Fixed width & height for non-square design) */}
+            <div className="relative w-full sm:w-[300px] md:w-[350px] lg:w-[400px] sm:h-[200px] md:h-[250px] lg:h-[300px] overflow-hidden rounded-lg">
               <Image
                 src={imageUrl}
                 alt={title}
                 quality={95}
-                layout="intrinsic" // Keeps the image ratio
-                width={700}
-                height={500}
-                className="rounded-lg object-cover w-full h-full transform transition-all hover:scale-105 hover:translate-x-2 hover:translate-y-2"
+                layout="fill" // Ensures the image fills the container
+                objectFit="cover" // Ensures the image covers the container without distortion
+                className="rounded-lg"
               />
             </div>
 
             {/* Text Content */}
-            <div className="sm:w-1/2">
+            <div className="flex-1 mt-4 sm:mt-0">
               <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">{title}</h3>
               <p className="mt-2 text-gray-700 dark:text-white/70 leading-relaxed">{description}</p>
               <ul className="flex flex-wrap mt-4 gap-2 sm:mt-6">
@@ -88,5 +87,25 @@ export default function Project({
         </section>
       </a>
     </motion.div>
+  );
+}
+
+// New component to display all the projects in a row with animation
+
+export function ProjectsGrid() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center p-4">
+      {projectsData.map((project, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
+          className="w-full max-w-[350px]" // Max width for all cards
+        >
+          <Project {...project} />
+        </motion.div>
+      ))}
+    </div>
   );
 }
