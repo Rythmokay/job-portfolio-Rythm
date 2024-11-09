@@ -21,7 +21,8 @@ export const projectsData = [
     tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
     imageUrl: corpcommentImg,
     category: "Full Stack",
-    githubUrl: "https://github.com/user/corpcomment"
+    githubUrl: "https://github.com/user/corpcomment",
+    liveStatus: true,
   },
   {
     title: "rmtDev",
