@@ -39,7 +39,7 @@ export default function Project({
       className="group mb-8 last:mb-0 overflow-hidden" // Added overflow-hidden to prevent horizontal scroll
     >
       <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="block">
-        <section className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+        <section className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white">
           
           {/* Live Status Badge with Blinking and Glowing Effect */}
           <div className="absolute top-4 right-4 flex items-center space-x-2 z-10">
@@ -48,7 +48,7 @@ export default function Project({
                 liveStatus
                   ? "bg-green-500 text-white animate-pulse text-shadow-glow"
                   : "bg-red-500 text-white animate-pulse text-shadow-glow"
-              } font-semibold text-sm px-2 py-1 rounded-full`}
+              } font-semibold text-sm px-2 py-1 rounded-full shadow-md`}
             >
               {liveStatus ? "Live" : "Not Live"}
             </span>
@@ -57,7 +57,7 @@ export default function Project({
           {/* Content Layout */}
           <div className="flex flex-col sm:flex-row sm:space-x-6 p-4 sm:p-6">
             {/* Image */}
-            <div className="sm:w-1/2 relative mb-4 sm:mb-0">
+            <div className="sm:w-1/2 relative mb-4 sm:mb-0 overflow-hidden rounded-lg">
               <Image
                 src={imageUrl}
                 alt={title}
