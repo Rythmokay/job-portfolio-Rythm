@@ -55,21 +55,21 @@ export default function Project({
           </div>
 
           {/* Content Layout */}
-          <div className="flex flex-col sm:flex-row sm:space-x-6 p-4 sm:p-6">
-            {/* Image Container (Fixed width & height for non-square design) */}
-            <div className="relative w-full sm:w-[300px] md:w-[350px] lg:w-[400px] sm:h-[200px] md:h-[250px] lg:h-[300px] overflow-hidden rounded-lg">
+          <div className="flex flex-col items-center justify-between sm:flex-row sm:space-x-6 p-4 sm:p-6">
+            {/* Square Image Container */}
+            <div className="relative w-full aspect-square mb-4 sm:mb-0 overflow-hidden rounded-lg">
               <Image
                 src={imageUrl}
                 alt={title}
                 quality={95}
-                layout="fill" // Ensures the image fills the container
-                objectFit="cover" // Ensures the image covers the container without distortion
+                layout="fill" // Ensures the image fills the square container
+                objectFit="cover" // Ensures the image covers the square container without distorting
                 className="rounded-lg"
               />
             </div>
 
             {/* Text Content */}
-            <div className="flex-1 mt-4 sm:mt-0">
+            <div className="sm:w-1/2">
               <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">{title}</h3>
               <p className="mt-2 text-gray-700 dark:text-white/70 leading-relaxed">{description}</p>
               <ul className="flex flex-wrap mt-4 gap-2 sm:mt-6">
@@ -87,25 +87,5 @@ export default function Project({
         </section>
       </a>
     </motion.div>
-  );
-}
-
-// New component to display all the projects in a row with animation
-
-export function ProjectsGrid() {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center p-4">
-      {projectsData.map((project, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1, duration: 0.5 }}
-          className="w-full max-w-[350px]" // Max width for all cards
-        >
-          <Project {...project} />
-        </motion.div>
-      ))}
-    </div>
   );
 }

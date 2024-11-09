@@ -28,15 +28,12 @@ export default function Header() {
     const observer = new IntersectionObserver(handleScroll, {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.5, // Track when 50% of the section is visible
     });
 
-    links.forEach((link) => {
-      const sectionElement = document.querySelector(link.hash) as HTMLElement;
-      if (sectionElement) {
-        observer.observe(sectionElement);
-      }
-    });
+    // Dynamically observe all sections with an id attribute
+    const sections = document.querySelectorAll('section[id]'); // Select all sections that have an id
+    sections.forEach((section) => observer.observe(section));
 
     return () => {
       observer.disconnect();
