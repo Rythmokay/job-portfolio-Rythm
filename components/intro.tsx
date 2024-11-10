@@ -33,8 +33,8 @@ export default function Intro() {
             <Image
               src="/linkdin profilepic.jpeg"
               alt="Rythm Jagga"
-              width={199} // Corrected to a number
-              height={192} // Keep height as is, it's already a number
+              width={199}
+              height={192}
               quality={95}
               priority={true}
               className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
@@ -78,9 +78,10 @@ export default function Intro() {
           delay: 0.1,
         }}
       >
+        {/* Contact Button */}
         <Link
           href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+          className="group bg-blue-600 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-blue-700 active:scale-105 transition"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());
@@ -90,8 +91,9 @@ export default function Intro() {
           <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
         </Link>
 
+        {/* Download Button */}
         <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
+          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer border-white dark:border-black"
           href="/CV.pdf"
           download
         >
@@ -99,17 +101,19 @@ export default function Intro() {
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
 
+        {/* LinkedIn Button */}
         <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://linkedin.com"
+          className="group bg-blue-600 text-white p-4 hover:text-white flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-white dark:border-black"
+          href="https://www.linkedin.com/in/rythm-jagga-393791309/"
           target="_blank"
         >
           <BsLinkedin />
         </a>
 
+        {/* GitHub Button */}
         <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://github.com"
+          className="group bg-black text-white p-4 text-[1.35rem] flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-white active:scale-105 transition cursor-pointer border-white dark:border-black"
+          href="https://github.com/Rythmokay/"
           target="_blank"
         >
           <FaGithubSquare />

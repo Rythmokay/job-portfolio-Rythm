@@ -5,7 +5,7 @@ import corpcommentImg from "@/public/corpcomment.png";
 import rmtdevImg from "@/public/rmtdev.png";
 import wordanalyticsImg from "@/public/wordanalytics.png";
 import { FaReact } from 'react-icons/fa';
-
+import Grammarandspell from '@/public/Projectimages/grammar&spellcheck.png'
 export const links = [
   { name: "Home", hash: "#home" },
   { name: "About", hash: "#about" },
@@ -16,12 +16,12 @@ export const links = [
 
 export const projectsData = [
   {
-    title: "CorpComment",
-    description: "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: corpcommentImg,
-    category: "Full Stack",
-    githubUrl: "https://github.com/user/corpcomment",
+    title: "Grammar and Spell Checker",
+    description: "Developed an NLP-based web application that checks grammar and spelling errors in assignments and sentences. Built using a tech stack including HTML, CSS, JavaScript, Python, Flask, and Natural Language Processing (NLP). The tool provides real-time corrections and suggestions, enhancing writing accuracy for users.",
+    tags: ["Html", "Css","javascript","Python","Flask","NLP"],
+    imageUrl: Grammarandspell,
+    category: "Machine Learning",
+    githubUrl: "https://grammarandspellchecker.vercel.app/",
     liveStatus: true,
   },
   {
@@ -163,6 +163,7 @@ export const projectsData = [
 ] as const;
 
 export const skillsData = [
+  // Frontend Development
   "HTML",
   "CSS",
   "JavaScript",
@@ -170,22 +171,58 @@ export const skillsData = [
   "React",
   "Next.js",
   "TypeScript",
+
+  // Backend Development
   "Node.js",
   "Express",
   "MongoDB",
   "Git",
   "Redux",
-  "Python (with Libraries)",
+
+  // Programming Languages
+  "Python",
   "SQL",
+  "C",
+  "C++",
+  "Java",
+  "Dsa",
+
+  // Data Engineering & Big Data
   "Apache Spark",
   "Hadoop",
-  "Power BI",
-  "Tableau",
-  "Excel",
   "Docker",
   "AWS",
   "Azure",
+
+  // Data Science & Machine Learning
+  "Pandas",
+  "NumPy",
+  "Scikit-learn",
+  "Matplotlib",
+  "Seaborn",
+  "TensorFlow",
+  "Keras",
+  "PyTorch",
+  "Jupyter Notebooks",
+  "NLTK",  // Natural Language Processing (NLP)
+  "SpaCy",  // NLP
+  "OpenCV",  // Computer Vision
+  "SciPy",
+  
+  // Data Visualization
+  "Power BI",
+  "Tableau",
+  "Excel",
+  
+  // Version Control & Deployment
+  "Git",
+  "Docker",
+  "AWS",
+  "Azure",
+  "Heroku"
 ] as const;
+
+
 
 export const project_nav = [
   { name: "All Projects", hash: "#All" },
