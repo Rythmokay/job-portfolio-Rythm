@@ -35,18 +35,18 @@ export default function Project({
         scale: scaleProgress,
         opacity: opacityProgress,
       }}
-      className="group mb-6 last:mb-0 overflow-hidden"
+      className="group mb-8 last:mb-0 overflow-hidden"
     >
       <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="block">
-        <section className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white relative mx-auto w-full sm:w-80 md:w-96 lg:w-[750px] h-full sm:h-[380px] md:h-[420px] lg:h-[400px]">
-          
-          {/* Live Status Badge with Borders, Blinking, and Glowing Effect */}
-          <div className="absolute top-3 right-3 flex items-center space-x-2 z-10">
+        <section className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white relative mx-auto w-full sm:w-4/5 md:w-3/4 lg:w-[750px] h-auto sm:h-auto">
+
+          {/* Live Status Badge */}
+          <div className="absolute top-4 right-4 flex items-center space-x-2 z-10">
             <span
               className={`${
                 liveStatus
-                  ? "bg-green-500 text-white border-2 border-green-600 animate-pulse text-shadow-glow"
-                  : "bg-red-500 text-white border-2 border-red-600 animate-pulse text-shadow-glow"
+                  ? "bg-green-500 text-white border-2 border-green-600 animate-pulse"
+                  : "bg-red-500 text-white border-2 border-red-600 animate-pulse"
               } font-semibold text-xs px-3 py-1 rounded-full shadow-md transform transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl`}
             >
               {liveStatus ? "Live" : "Not hosted yet"}
@@ -54,10 +54,10 @@ export default function Project({
           </div>
 
           {/* Content Layout */}
-          <div className="flex flex-col sm:flex-row sm:space-x-6 p-6">
+          <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
             {/* Image Container */}
-            <div className="relative w-full sm:w-1/3 h-56 sm:h-80 mb-6 sm:mb-0 overflow-hidden rounded-lg">
-              {/* Image inside div, with object fit */}
+            <div className="relative w-full h-56 sm:h-72 md:h-96 overflow-hidden rounded-lg">
               <div className="relative w-full h-full">
                 <Image
                   src={imageUrl}
@@ -71,8 +71,8 @@ export default function Project({
             </div>
 
             {/* Text Content */}
-            <div className="flex flex-col justify-between sm:w-2/3">
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h3>
+            <div className="flex flex-col justify-between w-full">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">{title}</h3>
               <p className="mt-4 text-sm sm:text-base text-gray-700 dark:text-white/70 leading-relaxed">{description}</p>
 
               {/* Tags */}
