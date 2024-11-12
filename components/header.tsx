@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { links } from "@/lib/data";
+import { links } from "@/lib/data"; // Ensure links contain the correct hash values
 import Link from "next/link";
 import clsx from "clsx";
 import { useActiveSectionContext } from "@/context/active-section-context";
@@ -12,33 +12,6 @@ type SectionName = "Home" | "About" | "Skills" | "Projects" | "Contact";
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
-
-  useEffect(() => {
-    const handleScroll: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionName = entry.target.getAttribute("id") as SectionName;
-          if (sectionName) {
-            setActiveSection(sectionName);
-          }
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleScroll, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5, // Track when 50% of the section is visible
-    });
-
-    // Dynamically observe all sections with an id attribute
-    const sections = document.querySelectorAll('section[id]'); // Select all sections that have an id
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [setActiveSection]);
 
   return (
     <header className="z-[999] relative">
@@ -77,8 +50,8 @@ export default function Header() {
                 )}
                 href={link.hash}
                 onClick={() => {
-                  setActiveSection(link.name as SectionName);
-                  setTimeOfLastClick(Date.now());
+                  setActiveSection(link.name as SectionName); // Set the active section based on the clicked link
+                  setTimeOfLastClick(Date.now()); // Optionally update the timestamp
                 }}
               >
                 {link.name}

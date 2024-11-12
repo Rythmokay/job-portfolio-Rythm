@@ -24,22 +24,6 @@ export const projectsData = [
     githubUrl: "https://grammarandspellchecker.vercel.app/",
     liveStatus: true,
   },
-  {
-    title: "rmtDev",
-    description: "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
-    imageUrl: rmtdevImg,
-    category: "Frontend",
-    githubUrl: "https://github.com/user/rmtdev"
-  },
-  {
-    title: "Word Analytics",
-    description: "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
-    imageUrl: wordanalyticsImg,
-    category: "Data Science",
-    githubUrl: "https://github.com/user/wordanalytics"
-  },
   
   // New projects
   {
@@ -92,32 +76,7 @@ export const projectsData = [
     category: "Full Stack",
     githubUrl: "https://github.com/user/full-stack-ecommerce"
   },
-  {
-    title: "Social Media Dashboard",
-    description: "A dashboard for users to manage social media posts and view analytics.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind"],
-    imageUrl: "", // Placeholder
-    category: "Full Stack",
-    githubUrl: "https://github.com/user/social-media-dashboard"
-  },
   
-  // Data Science
-  {
-    title: "Customer Segmentation Analysis",
-    description: "Analyzed customer data to segment users based on purchasing behavior using clustering techniques.",
-    tags: ["Python", "Pandas", "Matplotlib", "Seaborn"],
-    imageUrl: "",
-    category: "Data Science",
-    githubUrl: "https://github.com/user/customer-segmentation-analysis"
-  },
-  {
-    title: "Sales Forecasting",
-    description: "Built a model to predict future sales using historical data and regression techniques.",
-    tags: ["Python", "Scikit-learn", "NumPy"],
-    imageUrl: "",
-    category: "Data Science",
-    githubUrl: "https://github.com/user/sales-forecasting"
-  },
   {
     title: "Text Sentiment Analysis",
     description: "Created a sentiment analysis tool to classify text as positive, negative, or neutral.",
@@ -128,14 +87,7 @@ export const projectsData = [
   },
 
   // Machine Learning
-  {
-    title: "Image Classifier",
-    description: "Developed an image classification model using convolutional neural networks (CNN).",
-    tags: ["Python", "TensorFlow", "Keras"],
-    imageUrl: "",
-    category: "Machine Learning",
-    githubUrl: "https://github.com/user/image-classifier"
-  },
+  
   {
     title: "Recommendation System",
     description: "Built a recommendation system using collaborative filtering techniques for movie suggestions.",
@@ -143,22 +95,6 @@ export const projectsData = [
     imageUrl: "",
     category: "Machine Learning",
     githubUrl: "https://github.com/user/recommendation-system"
-  },
-  {
-    title: "Stock Price Prediction",
-    description: "Developed a predictive model for stock prices using historical data and LSTM networks.",
-    tags: ["Python", "TensorFlow", "NumPy"],
-    imageUrl: "",
-    category: "Machine Learning",
-    githubUrl: "https://github.com/user/stock-price-prediction"
-  },
-  {
-    title: "Fraud Detection System",
-    description: "Created a machine learning model to identify fraudulent transactions using anomaly detection.",
-    tags: ["Python", "Scikit-learn", "Pandas"],
-    imageUrl: "",
-    category: "Machine Learning",
-    githubUrl: "https://github.com/user/fraud-detection-system"
   },
 ] as const;
 
