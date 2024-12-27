@@ -15,16 +15,16 @@ export default function Header() {
 
   return (
     <header className="z-[999] relative">
-      {/* Background blur with solid black or white */}
+      {/* Background blur with wider navbar */}
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-[100vw] max-w-[470px] rounded-none backdrop-blur-md sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full sm:bg-transparent sm:border-0"
+        className="fixed top-0 left-1/2 h-[4.5rem] w-[90vw] max-w-[500px] rounded-none bg-white/80 backdrop-blur-md dark:bg-black/80 sm:top-6 sm:h-[3.25rem] sm:w-[50rem] sm:rounded-full"
         initial={{ y: -100, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
       ></motion.div>
 
-      {/* Navbar with exact background and text colors */}
-      <nav className="flex fixed top-[1.25rem] left-1/2 h-12 -translate-x-1/2 py-2 px-4 sm:top-[1.5rem] sm:py-[1.5rem] sm:px-8 sm:bg-transparent sm:border-0 sm:shadow-none">
-        <ul className="flex w-[20rem] flex-nowrap items-center justify-center gap-1 text-[0.8rem] font-medium sm:w-[initial] sm:gap-2 sm:text-lg">
+      {/* Navbar */}
+      <nav className="flex fixed top-[1.25rem] left-1/2 h-12 -translate-x-1/2 py-2 px-4 sm:top-[1.5rem] sm:py-3 sm:px-8">
+        <ul className="flex items-center justify-center gap-1 sm:gap-4 w-full">
           {links.map((link) => (
             <motion.li
               className="relative flex items-center"
@@ -34,13 +34,13 @@ export default function Header() {
             >
               <Link
                 className={clsx(
-                  "flex items-center justify-center px-4 py-2 rounded-full transition-all duration-200",
+                  "flex items-center justify-center px-3 py-2 rounded-full transition-all duration-200",
                   {
                     // Active link styles (blue bg with white text in light mode, white bg with black text in dark mode)
-                    "bg-blue-600 text-white dark:bg-white dark:text-black":
+                    "bg-blue-700 text-white dark:bg-blue-700 dark:text-white":
                       activeSection === link.name,
                     // Inactive link styles
-                    "hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white":
+                    "hover:bg-gray-200 hover:text-black dark:hover:bg-gray-200 dark:hover:text-black":
                       activeSection !== link.name,
                     // Text color for active link
                     "text-white dark:text-black": activeSection === link.name,
@@ -50,15 +50,16 @@ export default function Header() {
                 )}
                 href={link.hash}
                 onClick={() => {
-                  setActiveSection(link.name as SectionName); // Set the active section based on the clicked link
-                  setTimeOfLastClick(Date.now()); // Optionally update the timestamp
+                  setActiveSection(link.name as SectionName);
+                  setTimeOfLastClick(Date.now());
                 }}
+                aria-current={activeSection === link.name ? "page" : undefined}
               >
                 {link.name}
 
                 {link.name === activeSection && (
                   <motion.span
-                    className="bg-blue-600 rounded-full absolute inset-0 -z-10 dark:bg-black"
+                    className="bg-blue-700 rounded-full absolute inset-0 -z-10 dark:bg-blue-600"
                     layoutId="activeSection"
                     transition={{
                       type: "spring",

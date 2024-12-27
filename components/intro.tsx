@@ -1,50 +1,47 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
-import { FaLaptopCode, FaChartLine, FaBrain, FaPen } from "react-icons/fa"; // Added tech icons
-import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
 
 export default function Intro() {
-  const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
-  // State to handle modal visibility and selected domain for CV
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
+  // State to handle dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Handle modal close and CV download
-  const handleDownloadClick = (domain: string) => {
-    setSelectedDomain(domain);
-    setIsModalOpen(false);
+  // Handle Web Development CV download
+  const handleDownloadClick = () => {
+    // Directly download the specific Web Development CV file
+    const filePath = "/cv/Web_Development_CV.pdf"; // Path updated to web development CV
 
-    // Mapping domain to the file path in the public/cv folder
-    const cvFiles: { [key: string]: string } = {
-      Web_Development: "/cv/Web_Development_CV.pdf",
-      Data_Science: "/cv/Data_Science_CV.pdf",
-      Machine_Learning: "/cv/Machine_Learning_CV.pdf",
-      Non_Tech: "/cv/Non_Tech_CV.pdf",
-    };
-
-    // Get the file path for the selected domain
-    const filePath = cvFiles[domain];
-
-    if (filePath) {
-      // Trigger the file download by setting the location.href to the file path
-      window.location.href = filePath;
-    }
+    // Trigger the file download
+    window.location.href = filePath;
   };
+
+  // Check for dark mode on mount
+  useEffect(() => {
+    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDarkMode(isDark);
+
+    // Listen for changes to the color scheme
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", (e) => {
+      setIsDarkMode(e.matches);
+    });
+
+    return () => {
+      mediaQuery.removeEventListener("change", () => {});
+    };
+  }, []);
 
   return (
     <section
-      ref={ref}
       id="home"
       className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
     >
@@ -109,7 +106,7 @@ export default function Intro() {
         {/* Contact Button */}
         <Link
           href="#contact"
-          className="group bg-blue-600 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-blue-700 active:scale-105 transition"
+          className="group bg-blue-700 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());
@@ -119,10 +116,14 @@ export default function Intro() {
           <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
         </Link>
 
-        {/* Download CV Button */}
+        {/* Download Web Development CV Button with dynamic styling based on dark mode */}
         <button
-          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition"
-          onClick={() => setIsModalOpen(true)} // Open the modal on click
+          className={`group px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition ${
+            isDarkMode
+              ? "bg-gray-200 text-black hover:bg-gray-200 border-1 border-gray-300"
+              : "bg-black text-white hover:bg-gray-800 border-1 border-gray-600"
+          }`}
+          onClick={handleDownloadClick} // Directly download the web development CV
         >
           Download CV{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
@@ -130,77 +131,26 @@ export default function Intro() {
 
         {/* LinkedIn Button */}
         <a
-          className="group bg-blue-600 text-white p-4 hover:text-white flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-white dark:border-black"
+          className="group bg-blue-700 text-white p-4 hover:text-white flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-2 border-white dark:border-black"
           href="https://www.linkedin.com/in/rythm-jagga-393791309/"
           target="_blank"
         >
           <BsLinkedin />
         </a>
 
-        {/* GitHub Button */}
+        {/* GitHub Button with dynamic styling based on dark mode */}
         <a
-          className="group bg-black text-white p-4 text-[1.35rem] flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-white active:scale-105 transition cursor-pointer border-white dark:border-black"
+          className={`group p-4 text-[1.35rem] flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-1 ${
+            isDarkMode
+              ? "bg-gray-200 text-black hover:bg-gray-200 border-gray-300"
+              : "bg-black text-white hover:bg-gray-800 border-gray-600"
+          }`}
           href="https://github.com/Rythmokay/"
           target="_blank"
         >
           <FaGithubSquare />
         </a>
       </motion.div>
-
-      {/* Modal for CV selection */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex justify-center items-center">
-          <motion.div
-            className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-8 rounded-lg shadow-lg max-w-[400px] w-full relative"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: "spring", stiffness: 150, delay: 0.1 }}
-          >
-            {/* Close Modal Button */}
-            <button
-              className="absolute top-2 right-2 text-xl text-gray-500 hover:text-gray-700"
-              onClick={() => setIsModalOpen(false)} // Close modal
-            >
-              <IoMdClose />
-            </button>
-
-            <h2 className="text-xl font-semibold text-center mb-6">Select Domain</h2>
-            <div className="space-y-4">
-              {/* Web Development CV */}
-              <button
-                className="w-full bg-blue-500 text-white py-2 rounded-full hover:bg-blue-600 transition flex items-center gap-2 justify-center"
-                onClick={() => handleDownloadClick("Web_Development")}
-              >
-                <FaLaptopCode className="text-lg" /> Web Development CV
-              </button>
-
-              {/* Data Science CV */}
-              <button
-                className="w-full bg-green-500 text-white py-2 rounded-full hover:bg-green-600 transition flex items-center gap-2 justify-center"
-                onClick={() => handleDownloadClick("Data_Science")}
-              >
-                <FaChartLine className="text-lg" /> Data Science CV
-              </button>
-
-              {/* Machine Learning CV */}
-              <button
-                className="w-full bg-yellow-500 text-white py-2 rounded-full hover:bg-yellow-600 transition flex items-center gap-2 justify-center"
-                onClick={() => handleDownloadClick("Machine_Learning")}
-              >
-                <FaBrain className="text-lg" /> Machine Learning CV
-              </button>
-
-              {/* Non-Tech Job Roles CV */}
-              <button
-                className="w-full bg-gray-500 text-white py-2 rounded-full hover:bg-gray-600 transition flex items-center gap-2 justify-center"
-                onClick={() => handleDownloadClick("Non_Tech")}
-              >
-                <FaPen className="text-lg" /> Non-Tech Job Roles CV
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      )}
     </section>
   );
 }
