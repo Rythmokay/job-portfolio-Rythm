@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import SectionHeading from "./section-heading";
 import { projectsData } from "@/lib/data";
-import Project from "./project";
+import Project from "../components/project";
 import { useSectionInView } from "@/lib/hooks";
 import CategoryTabs from "./CategoryTabs"; // Import the CategoryTabs component
 
