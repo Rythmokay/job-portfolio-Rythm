@@ -120,8 +120,8 @@ export default function Intro() {
         <button
           className={`group px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition ${
             isDarkMode
-              ? "bg-gray-200 text-black hover:bg-gray-200 border-1 border-gray-300"
-              : "bg-black text-white hover:bg-gray-800 border-1 border-gray-600"
+              ? "bg-gray-200 text-black hover:bg-gray-200 "
+              : "bg-gray-200 text-black hover:bg-gray-300"
           }`}
           onClick={handleDownloadClick} // Directly download the web development CV
         >
@@ -142,8 +142,8 @@ export default function Intro() {
         <a
           className={`group p-4 text-[1.35rem] flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-1 ${
             isDarkMode
-              ? "bg-gray-200 text-black hover:bg-gray-200 border-gray-300"
-              : "bg-black text-white hover:bg-gray-800 border-gray-600"
+              ?"bg-gray-200 text-black hover:bg-gray-200 "
+              : "bg-gray-200 text-black hover:bg-gray-300"
           }`}
           href="https://github.com/Rythmokay/"
           target="_blank"
